@@ -1,0 +1,52 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+body{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    box-sizing: border-box;
+    background: black;
+}
+.wrapper{
+    padding: 30px;
+}
+.container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    
+
+}
+.container h2{
+    color: #fff;
+}
+#pixelsContainer{
+    display: flex;
+    flex-wrap: wrap;
+    height: 550px;
+    width: 550px;
+    background: rgb(27, 27, 27);
+}
+
+.gridRow {
+    border: 1px solid  rgba(255, 255, 255, 0.05);
+    width: 100%;
+}
+
+.cell {
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    display: inline-block;
+    height: 100%;
+}
+.active{
+    background: #fff;
+}
+
+.tools-container{
+    display: flex;
+    justify-content: center;
+}
