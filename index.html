@@ -16,12 +16,21 @@
         </div>
         <div class="tools-container">
             <div class="tools">
-                <input type="button" value="Color"></input>
-                <input type="button" value="Rainbow"></input>
-                <input type="button" value="Erase"></input>    
+                <input type="color" value="#FF0000"></input>
+                <input type="button" value="rainbow"></input>
+                <input type="button" value="erase"></input>
+                <input type="button" value="reset"></input>    
+            </div>
+            <div>
+                <span id="rangeValue">0</span>
+                <input class="range" type="range" value="16" min="16" max="100" onChange="rangeSlide(this.value)" onmousemove="rangeSlide(this.value)"></Input>
             </div>
         </div>
+
+        
     </div>
+
+ 
     
     
     <!-- JavaScript -->

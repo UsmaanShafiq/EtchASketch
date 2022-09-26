@@ -1,18 +1,13 @@
-//pseudo code
-/* 
-    1. user will set number of pixels on page
-*/
-
-
-// Sets important constants and variables
-
 const pixelsContainer = document.getElementById("pixelsContainer");
 let rows = document.getElementsByClassName("gridRow");
 let cells = document.getElementsByClassName("cell");
 let btns = document.querySelectorAll('input');
+let rangeVal = document.getElementsByClassName('range').value;
 let action='' ;
 
 
+
+//  Grid Code Starts  //
 
 // Creates a default grid sized 16x16
 function defaultGrid() {
@@ -20,10 +15,8 @@ function defaultGrid() {
     makeColumns(16);
 }
 defaultGrid();
-
 // Takes (rows, columns) input and makes a grid
 function makeRows(rowNum) {
-
     // Creates rows
     for (r = 0; r < rowNum; r++) {
         let row = document.createElement("div");
@@ -47,20 +40,24 @@ function makeColumns(cellNum) {
     };
 };
 
+//  End Grid Code   //
 
-function drawColor(cells){
-    cells.forEach(cell => {
-        cell.onmouseover = (e) => cell.style.background = '#fff';        
-    });
+
+
+
+let selectedColor =  document.querySelector("input[type='color']");
+selectedColor.onclick = pickedColor(selectedColor);
+
+function pickedColor (selectedColor){
+    selectedColor.addEventListener('change', (e) => {
+        bgClr = e.target.value;
+        console.log(bgClr);
+    })
 }
 
 
-function eraseColor(cells){
-    cells.forEach(cell => {
-        cell.onmouseover = (e) => cell.style.background = 'transparent';        
-    });
-}
 
+//Rainbow Color 
 function randomColor() {
     let color = [];
     for (let i = 0; i < 3; i++) {
@@ -74,20 +71,43 @@ function randomColorPicked(cells){
     });
 } 
 
- 
+//Erase Color
+function eraseColor(cells){
+    cells.forEach(cell => {
+        cell.onmouseover = (e) => cell.style.background = 'transparent';        
+    });
+}
+
+
+//Reset Color
+function resetColor(){
+    cells.forEach(cell => {
+        cell.style.background = 'inherit';        
+    });
+}
+
 
 btns.forEach(btn => {
     btn.addEventListener('click', (e) =>{
         action = e.target.value;
-        if (action == 'Erase') {
+        console.log(action = e.target.value);
+        if (action == 'erase') {
             eraseColor(cells);
         }
-        else if (action == 'Rainbow') {
+        else if (action == 'rainbow'){
             randomColorPicked(cells);
-        }
+        }  
+        else if (action == 'reset'){
+            resetColor(cells);
+        }  
         else{
-            drawColor(cells);
+            
         }
     });
-     
 });
+
+
+
+function rangeSlide(value) {
+    document.getElementById('rangeValue').innerHTML = value + 'x' + value;
+}
